@@ -15,9 +15,6 @@ const Header = () => {
 	const [toggle, setToggle] = useState(false);
 	const [toggleOrder, setToggleOrder] = useState(false);
 
-	const handleToggleOrder = () =>{
-		setToggleOrder(!toggleOrder);
-	}
 	const handleToggle = () => {
 		setToggle(!toggle);
 	}
@@ -53,15 +50,15 @@ const Header = () => {
 					<li className="navbar-email">YardSale@example.com</li>
 					<img src={flecha} alt="arrow"  className="arrow-menu" />
 					</div>
-					<li className="navbar-shopping-cart" onClick={handleToggleOrder}>
+					<li className="navbar-shopping-cart" onClick={() => setToggleOrder(!toggleOrder)} >
 						<img src= {shoppingCart} alt="shopping cart" />
 						{state.cart.length > 0  ?<div>{state.cart.length}</div> :null }
 					</li>
 				</ul>
 			</div>
 			{toggle && <Menu />}
-			{toggleOrder && <MyOrder />}
-		</nav>
+			{toggleOrder && <MyOrder toggleOrder={toggleOrder} setToggleOrder={setToggleOrder} />} {/*aqui le estamos pasando estos propos para poderlos utilizar en la carpeta de myOrder y hacer funcionar la flecha de close*/ } 
+		</nav>	
 	);
 }
 

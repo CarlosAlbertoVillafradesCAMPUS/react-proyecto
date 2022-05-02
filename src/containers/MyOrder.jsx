@@ -4,7 +4,7 @@ import '@styles/MyOrder.scss';
 import flecha from '@icons/flechita.svg';
 import AppContext from '../context/AppContext';
 
-const MyOrder = () => {
+const MyOrder = ({toggleOrder, setToggleOrder}) => { //le ponemos como parametros los props que le pusimos en header a la etiqueta de myOrder y hacer funcionar la flecha
 
 	const {state} = useContext(AppContext);
 	const sumTotal = () => {
@@ -16,7 +16,7 @@ const MyOrder = () => {
 	return (
 		<aside className="MyOrder">
 			<div className="title-container">
-				<img src={flecha} alt="arrow" />
+				<img src={flecha}  alt="arrow" onClick={() => setToggleOrder(!toggleOrder)} />
 				<p className="title-order">My order</p>
 			</div>
 			<div className="my-order-content">

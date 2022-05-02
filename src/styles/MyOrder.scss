@@ -6,12 +6,19 @@
 	padding: 24px;
 	box-sizing: border-box;
 	position: absolute;
-	right: 0;
+	right: 55px;
 	top: 60px;
 	bottom: 0;
 	background-color: var(--white);
 	border-radius: 6px;
 	border: 1px solid var(--very-light-pink);
+	position: fixed;
+	transition: 1s ease;
+	animation: swipeLeft 1.5s ease forwards;
+
+}
+@keyframes swipeLeft {
+	100% {transform: translateX(-400px);}
 }
 .title-container {
 	display: flex;
@@ -20,6 +27,9 @@
 	transform: rotate(180deg);
 	margin-right: 14px;
 	
+}
+.title-container img:hover{
+	cursor: pointer;
 }
 .title-order {
 	font-size: var(--lg);
