@@ -2,10 +2,10 @@ import React from 'react';
 import close from '../assets/icons/icon_close.png';
 import '@styles/MenuMobile.scss';
 
-const MenuMobile = () => {
+const MenuMobile = ({toggleMenuM, setToggleMenuM}) => {
     return (
      <div className="movil-menu">
-         <img src={close} alt="close" />
+         <img src={close} alt="close" onClick={() => setToggleMenuM(!toggleMenuM)} />
         <ul className="principal">
             <li>
                 <a href="/">CATEGORIES</a>

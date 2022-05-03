@@ -20,12 +20,9 @@ const Header = () => {
 	const handleToggle = () => {
 		setToggle(!toggle);
 	}
-	const handleToggleMenuM = () => {
-		setToggleMenuM(!toggleMenuM)
-	}
 	return (
 		<nav>
-			<img src= {iconMenu} alt="menu" className="menu" onClick={handleToggleMenuM} />
+			<img src= {iconMenu} alt="menu" className="menu" onClick={() => setToggleMenuM(!toggleMenuM)} />
 			<div className="navbar-left">
 				<img src= {logo} alt="logo" className="nav-logo" />
 				<ul>
@@ -61,7 +58,7 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-			{toggleMenuM && <MenuMobile />}
+			{toggleMenuM && <MenuMobile toggleMenuM={toggleMenuM} setToggleMenuM={setToggleMenuM} />}
 			{toggle && <Menu />}
 			{toggleOrder && <MyOrder toggleOrder={toggleOrder} setToggleOrder={setToggleOrder} />} {/*aqui le estamos pasando estos propos para poderlos utilizar en la carpeta de myOrder y hacer funcionar la flecha de close*/ } 
 		</nav>	
