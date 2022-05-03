@@ -45,10 +45,16 @@
 @media (max-width: 640px) {
 
 	.ProductItem {
-		width: 140px;
+		width: 100px;
 	}
 	.ProductItem .image-product {
-		width: 140px;
-		height: 140px;
+		width: 100px;
+		height: 100px;
+	}
+	.product-info div p:nth-child(2) {
+		font-size: 12px;
+	}
+	.product-info div p:nth-child(1) {
+		font-size: 14px;
 	}
 }
