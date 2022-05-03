@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
 import '@styles/Header.scss';
 import Menu from '@components/Menu.jsx';
+import MenuMobile from './MenuMobile';
+import AppContext from '../context/AppContext';
+import MyOrder from '../containers/MyOrder';
 import iconMenu from '@icons/icon_menu.svg';
 import logo from '@logos/logo_yard_sale.svg'
 import shoppingCart from '@icons/icon_shopping_cart.svg';
 import flecha from '@icons/flechita.svg';
-import AppContext from '../context/AppContext';
-import MyOrder from '../containers/MyOrder';
 
 const Header = () => {
 
@@ -14,13 +15,17 @@ const Header = () => {
 
 	const [toggle, setToggle] = useState(false);
 	const [toggleOrder, setToggleOrder] = useState(false);
+	const [toggleMenuM, setToggleMenuM] = useState(false);
 
 	const handleToggle = () => {
 		setToggle(!toggle);
 	}
+	const handleToggleMenuM = () => {
+		setToggleMenuM(!toggleMenuM)
+	}
 	return (
 		<nav>
-			<img src= {iconMenu} alt="menu" className="menu"  />
+			<img src= {iconMenu} alt="menu" className="menu" onClick={handleToggleMenuM} />
 			<div className="navbar-left">
 				<img src= {logo} alt="logo" className="nav-logo" />
 				<ul>
@@ -56,6 +61,7 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
+			{toggleMenuM && <MenuMobile />}
 			{toggle && <Menu />}
 			{toggleOrder && <MyOrder toggleOrder={toggleOrder} setToggleOrder={setToggleOrder} />} {/*aqui le estamos pasando estos propos para poderlos utilizar en la carpeta de myOrder y hacer funcionar la flecha de close*/ } 
 		</nav>	

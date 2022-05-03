@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import '@styles/ProductItem.scss';
 import addToCart from '@icons/bt_add_to_cart.svg';
+import addedCart from '@icons/bt_added_to_cart.svg'
 import AppContext from '../context/AppContext';
 
 const ProductItem = ({ product }) => {
-	const {AddToCart} = useContext(AppContext);
+	const {AddToCart, removeFromCart, state} = useContext(AppContext);
+	const itsProductAdded = () => //aqui creameos una funcion que nos compare los productos haber si son los mismo o no, con el ID
+    state.cart.some((item) => item.id === product.id) ? true : false;
 
 	const handleClick = (item) => {  //hnadle se utiliza para una funcion despues d eun evento y siempre va con el nombre de handle + el evento
-		AddToCart(item);
+		itsProductAdded() ? removeFromCart(item) : AddToCart(item); 
 	}
 
 	return (
@@ -19,7 +22,7 @@ const ProductItem = ({ product }) => {
 					<p>{product.title}</p>
 				</div>
 				<figure onClick={() => handleClick(product)} >
-					<img src={addToCart} alt="" />
+					{itsProductAdded() ? (<img src={addedCart} alt='addedcart' className='added-cart'/>) : (<img src={addToCart} alt='addcart' className='add-cart' />)}
 				</figure>
 			</div>
 		</div>
